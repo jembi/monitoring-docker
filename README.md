@@ -20,4 +20,4 @@ The applications are split into separate compose files so they may be deployed s
 
 The OpenHIM will need to upgraded to version `v8.1.1` for the prometheus exporter endpoint to be available.
 
-Currently, the previous version of the collection tools are running on the Rwanda HIE Productions server and viz tools are running on a test server separately so reduce load on the production server.
+Currently, the previous version of the collection tools are running on the Rwanda HIE Productions server and viz tools are running on a test server separately to reduce load on the production server.
