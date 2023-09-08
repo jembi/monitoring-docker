@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "18d03968-9645-4ad1-8a97-24128e15e219",
+		"name": "OpenHIM Rw Monitoring",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23372581"
+	},
+	"item": [
+		{
+			"name": "Rw test",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"function getRandomValue(probabilities, values) {",
+							"  // Calculate the total sum of probabilities",
+							"  const totalSum = probabilities.reduce((acc, val) => acc + val, 0);",
+							"",
+							"  // Generate a random number between 0 and the total sum",
+							"  const randomNum = Math.random() * totalSum;",
+							"",
+							"  // Find the index of the selected probability",
+							"  let cumulativeSum = 0;",
+							"  let selectedIndex = -1;",
+							"",
+							"  for (let i = 0; i < probabilities.length; i++) {",
+							"    cumulativeSum += probabilities[i];",
+							"    if (randomNum <= cumulativeSum) {",
+							"      selectedIndex = i;",
+							"      break;",
+							"    }",
+							"  }",
+							"",
+							"  // Return the corresponding value",
+							"  return values[selectedIndex];",
+							"}",
+							"",
+							"const probabilities = [0.1, 0.1, 0.2, 0.1, 0.1, 0.1, 0.3]",
+							"const clients = ['rwamagana', 'kibagabaga', 'rwinkwavu', 'kirehe', 'kibungo', 'kacyiru', 'nyagatare']",
+							"// const probabilities = [0.4, 0.6]",
+							"// const clients = ['rwamagana', 'kibagabaga']",
+							"// const probabilities = [1]",
+							"// const clients = ['rwamagana']",
+							"pm.variables.set('client', getRandomValue(probabilities, clients))",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Custom {{client}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5001/test",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5001",
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

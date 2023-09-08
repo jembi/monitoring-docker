@@ -1,0 +1,156 @@
+{
+  "Users": [
+    {
+      "firstname": "Super",
+      "surname": "User",
+      "email": "root@openhim.org",
+      "provider": "token",
+      "groups": [
+        "admin"
+      ],
+      "passwordAlgorithm": null,
+      "passwordHash": null,
+      "passwordSalt": null,
+      "expiry": null,
+      "locked": false,
+      "token": null,
+      "tokenType": null
+    }
+  ],
+  "Clients": [
+    {
+      "clientID": "test",
+      "name": "Test Client",
+      "roles": [
+        "instant"
+      ],
+      "customTokenID": "test"
+    },
+    {
+      "clientID": "rwamagana-hospital",
+      "name": "Rwamagana Hospital",
+      "roles": [
+        "instant"
+      ],
+      "customTokenID": "rwamagana"
+    },
+    {
+      "clientID": "kibagabaga-hospital",
+      "name": "Kibagabaga Hospital",
+      "roles": [
+        "instant"
+      ],
+      "customTokenID": "kibagabaga"
+    },
+    {
+      "clientID": "rwinkwavu-hospital",
+      "name": "Rwinkwavu Hospital",
+      "roles": [
+        "instant"
+      ],
+      "customTokenID": "rwinkwavu"
+    },
+    {
+      "clientID": "kirehe-hospital",
+      "name": "Kirehe Hospital",
+      "roles": [
+        "instant"
+      ],
+      "customTokenID": "kirehe"
+    },
+    {
+      "clientID": "kibungo-hospital",
+      "name": "Kibungo Hospital",
+      "roles": [
+        "instant"
+      ],
+      "customTokenID": "kibungo"
+    },
+    {
+      "clientID": "kacyiru-police-hospital",
+      "name": "Kacyiru Police Hospital",
+      "roles": [
+        "instant"
+      ],
+      "customTokenID": "kacyiru"
+    },
+    {
+      "clientID": "nyagatare-hospital",
+      "name": "Nyagatare Hospital",
+      "roles": [
+        "instant"
+      ],
+      "customTokenID": "nyagatare"
+    }
+  ],
+  "Channels": [
+    {
+      "name": "Test channel",
+      "urlPattern": "^/test$",
+      "methods": [
+        "GET",
+        "POST",
+        "DELETE",
+        "PUT",
+        "OPTIONS",
+        "HEAD",
+        "TRACE",
+        "CONNECT",
+        "PATCH"
+      ],
+      "type": "http",
+      "tcpPort": null,
+      "tcpHost": null,
+      "pollingSchedule": null,
+      "requestBody": true,
+      "responseBody": true,
+      "allow": [
+        "instant"
+      ],
+      "whitelist": [],
+      "authType": "private",
+      "routes": [
+        {
+          "name": "Test route",
+          "type": "http",
+          "status": "enabled",
+          "secured": false,
+          "host": "openhim-console",
+          "port": 80,
+          "path": "/config/default.json",
+          "pathTransform": "",
+          "primary": true,
+          "username": "",
+          "password": "",
+          "forwardAuthHeader": false,
+          "waitPrimaryResponse": false,
+          "statusCodesCheck": "",
+          "kafkaClientId": "",
+          "kafkaTopic": ""
+        }
+      ],
+      "matchContentTypes": [],
+      "matchContentRegex": null,
+      "matchContentXpath": null,
+      "matchContentJson": null,
+      "matchContentValue": null,
+      "properties": [],
+      "txViewAcl": [],
+      "txViewFullAcl": [],
+      "txRerunAcl": [],
+      "status": "enabled",
+      "rewriteUrls": false,
+      "addAutoRewriteRules": true,
+      "rewriteUrlsConfig": [],
+      "autoRetryEnabled": false,
+      "autoRetryPeriodMinutes": 60,
+      "updatedBy": {
+        "id": "64dc8a9156fb567529fa691e",
+        "name": "Super User"
+      },
+      "alerts": []
+    }
+  ],
+  "Mediators": [],
+  "ContactGroups": []
+}

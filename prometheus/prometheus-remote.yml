@@ -19,3 +19,11 @@ scrape_configs:
   - job_name: "cadvisor"
     static_configs:
       - targets: ["<ip>:8080"]
+
+  # Create a job for reading openhim metrics
+  - job_name: "openhim"
+    tls_config:
+      insecure_skip_verify: true
+    scheme: "https"
+    static_configs:
+      - targets: ["<ip>:8080"]
