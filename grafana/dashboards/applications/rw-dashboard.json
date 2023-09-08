@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 12,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -59,7 +58,7 @@
       },
       "gridPos": {
         "h": 33,
-        "w": 8,
+        "w": 5,
         "x": 0,
         "y": 0
       },
@@ -68,7 +67,9 @@
         "footer": {
           "enablePagination": true,
           "fields": "",
-          "reducer": ["sum"],
+          "reducer": [
+            "sum"
+          ],
           "show": false
         },
         "frameIndex": 1,
@@ -122,6 +123,129 @@
       },
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 10
+              }
+            ]
+          },
+          "unit": "string"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byType",
+              "options": "number"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeFromNow"
+              },
+              {
+                "id": "custom.displayMode",
+                "value": "color-text"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 33,
+        "w": 6,
+        "x": 5,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "footer": {
+          "enablePagination": true,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "Time since last transaction"
+          }
+        ]
+      },
+      "pluginVersion": "9.2.3",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sort(max_over_time(timestamp(sum by(client) (changes(openhim_transactions_total{client!=\"undefined\"}[5m])) > 0)[$__range:1m]) * 1000)",
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Time since OpenHIM last received transactions from client",
+      "transformations": [
+        {
+          "id": "labelsToFields",
+          "options": {
+            "mode": "columns"
+          }
+        },
+        {
+          "id": "merge",
+          "options": {}
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true
+            },
+            "indexByName": {
+              "Time": 0,
+              "Value": 2,
+              "client": 1
+            },
+            "renameByName": {
+              "Value": "Time since last transaction",
+              "client": "EMR"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "fieldConfig": {
+        "defaults": {
           "mappings": [],
           "thresholds": {
             "mode": "percentage",
@@ -142,8 +266,8 @@
       },
       "gridPos": {
         "h": 33,
-        "w": 16,
-        "x": 8,
+        "w": 13,
+        "x": 11,
         "y": 0
       },
       "id": 4,
@@ -153,7 +277,9 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "",
           "limit": 20,
           "values": true
@@ -176,7 +302,7 @@
           "refId": "A"
         }
       ],
-      "title": "Time since OpenHIM last receive transactions from client",
+      "title": "Time since OpenHIM last received transactions from client",
       "transformations": [
         {
           "id": "joinByLabels",
@@ -209,6 +335,6 @@
   "timezone": "",
   "title": "Rwanda HIE Dashboard",
   "uid": "dv7edSRIk",
-  "version": 2,
+  "version": 1,
   "weekStart": ""
 }
