@@ -134,15 +134,15 @@
           },
           "mappings": [],
           "thresholds": {
-            "mode": "percentage",
+            "mode": "absolute",
             "steps": [
               {
-                "color": "red",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "green",
-                "value": 10
+                "color": "red",
+                "value": 7
               }
             ]
           },
@@ -157,7 +157,7 @@
             "properties": [
               {
                 "id": "unit",
-                "value": "dateTimeFromNow"
+                "value": "none"
               },
               {
                 "id": "custom.displayMode",
@@ -200,7 +200,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sort(max_over_time(timestamp(sum by(client) (changes(openhim_transactions_total{client!=\"undefined\"}[5m])) > 0)[$__range:1m]) * 1000)",
+          "expr": "(time() * 1000 - sort(max_over_time(timestamp(sum by(client) (changes(openhim_transactions_total{client!=\"undefined\"}[5m])) > 0)[$__range:1m]) * 1000)) / (1000*60*60*24)",
           "instant": true,
           "legendFormat": "__auto",
           "range": false,
@@ -231,7 +231,7 @@
               "client": 1
             },
             "renameByName": {
-              "Value": "Time since last transaction",
+              "Value": "Day(s) since last transaction",
               "client": "EMR"
             }
           }
@@ -248,19 +248,19 @@
         "defaults": {
           "mappings": [],
           "thresholds": {
-            "mode": "percentage",
+            "mode": "absolute",
             "steps": [
               {
-                "color": "red",
+                "color": "green",
                 "value": null
               },
               {
-                "color": "green",
-                "value": 10
+                "color": "red",
+                "value": 7
               }
             ]
           },
-          "unit": "dateTimeFromNow"
+          "unit": "none"
         },
         "overrides": []
       },
@@ -295,7 +295,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "sort(max_over_time(timestamp(sum by(client) (changes(openhim_transactions_total{client!=\"undefined\"}[5m])) > 0)[$__range:1m]) * 1000)",
+          "expr": "(time() * 1000 - sort(max_over_time(timestamp(sum by(client) (changes(openhim_transactions_total{client!=\"undefined\"}[5m])) > 0)[$__range:1m]) * 1000)) / (1000*60*60*24)",
           "instant": true,
           "legendFormat": "__auto",
           "range": false,
@@ -335,6 +335,6 @@
   "timezone": "",
   "title": "Rwanda HIE Dashboard",
   "uid": "dv7edSRIk",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
